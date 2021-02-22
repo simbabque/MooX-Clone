@@ -39,8 +39,7 @@ jobs:
         shell: bash
         run: |
           eval $(perl -I ~/perl5/lib/perl5/ -Mlocal::lib)
-          ~/perl5/bin/minil build
-          mv $(ls -td ./* | head -1) build
+          ~/perl5/bin/minil dist
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
@@ -58,9 +57,10 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt install tree
+      - name: Unpack distribution
+        run: mkdir build && tar -xzf *.tar.gz -C build --strip-components=1
       - name: Tree
-        run: |
-          tree build
+        run: tree build
       - name: License
         run: cat build/LICENSE
       - name: Readme
