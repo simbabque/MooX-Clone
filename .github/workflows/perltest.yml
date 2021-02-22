@@ -39,7 +39,7 @@ jobs:
         shell: bash
         run: |
           eval $(perl -I ~/perl5/lib/perl5/ -Mlocal::lib)
-          ~/perl5/bin/minil dist
+          ~/perl5/bin/minil build
           mv $(ls -td ./* | head -1) build
       - name: Upload artifact
         uses: actions/upload-artifact@v2
