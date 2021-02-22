@@ -67,8 +67,6 @@ jobs:
         run: cat build/README.md
       - name: Changes
         run: cat build/Changes
-      - name: BUILD.PL
-        run: cat build/BUILD.PL
       - name: META.json
         run: cat build/META.json
       - name: META.yml
