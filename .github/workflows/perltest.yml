@@ -58,7 +58,7 @@ jobs:
           name: dist
       - name: Install dependencies
         run: |
-          sudo apt install tree
+          sudo apt install tree perl-doc
       - name: Tree
         run: tree build
       - name: License
