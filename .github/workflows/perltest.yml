@@ -73,13 +73,14 @@ jobs:
         run: cat build/META.yml
       - name: Perldoc
         run: perldoc -TF  lib/**/*.{pm,pod} 
-  build:
+  test:
+    name: Perl ${{ matrix.perl }} on ${{ matrix.os }}
+    needs: dist
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ 'ubuntu-latest', 'macos-latest', 'windows-latest' ]
         perl: [ '5.8', '5.16', '5.18', '5.20', '5.22', '5.24',' 5.26',' 5.28', '5.30', '5.32', 'latest' ]
-    name: Perl ${{ matrix.perl }} on ${{ matrix.os }}
     steps:
       - name: Get dist artifact
         uses: actions/download-artifact@v2
